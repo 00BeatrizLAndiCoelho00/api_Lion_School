@@ -4,6 +4,8 @@ const { alunos } = require("../banco/alunos.js")
 
 const getAllStudents = function(){
 
+    let status = false
+
     jsonStudents= {}
    
     let arrayStudents = []
@@ -13,13 +15,48 @@ const getAllStudents = function(){
     })
     
     jsonStudents = arrayStudents
-    return jsonStudents
+
+    if(jsonStudents != ''){
+        status = true
+        return jsonStudents
+    } else{
+        return status
+    }
+    
  
 
 }
 
+//console.log(getAllStudents())
+
 getAllStudents()
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//console.log(alunos[0].nome)
+///////////////////////////////////////////GET STUDENTS FOR EACH  LIST///////////////////////////////////////////////////////////////
+
+const getStudentsForStatus = function(){
+
+    let status = false
+
+    jsonStudents= {}
+   
+    let arrayStudents = []
+ 
+    alunos.forEach(alunos =>{
+        arrayStudents.push(alunos.status)
+    })
+    
+    jsonStudents = arrayStudents
+
+    if(jsonStudents != ''){
+        status = true
+        return jsonStudents
+    } else{
+        return status
+    }
+    
+
+}
+console.log(getStudentsForStatus())
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

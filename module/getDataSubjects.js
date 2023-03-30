@@ -7,6 +7,8 @@ const { cursos } = require("../banco/cursos.js")
 const getAllSubjects = function(){
 
     jsonSubjects = {}
+
+    let status = false
    
     let arraySubjects = []
  
@@ -16,7 +18,14 @@ const getAllSubjects = function(){
     
     jsonSubjects = arraySubjects
 
-    return jsonSubjects
+    if(jsonSubjects != ''){
+        status = true
+        return jsonSubjects
+    }else{
+        status = false
+    }
+
+    
  
 }
 console.log(getAllSubjects())

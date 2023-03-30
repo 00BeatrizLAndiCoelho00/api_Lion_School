@@ -685,7 +685,7 @@ var alunos = [
         }
     ];
 
-   
+   //console.log(alunos[1].status)
 module.exports={
     alunos
 }
