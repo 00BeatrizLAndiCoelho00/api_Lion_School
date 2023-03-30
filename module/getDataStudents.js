@@ -1,4 +1,4 @@
-const { stat } = require("fs")
+
 const { alunos } = require("../banco/alunos.js")
 
 ///////////////////////////////////////////GET STUDENTS LIST///////////////////////////////////////////////////////////////
@@ -12,7 +12,7 @@ const getAllStudents = function(){
     let arrayStudents = []
  
     alunos.forEach(alunos =>{
-        arrayStudents.push(alunos.nome)
+        arrayStudents.push(alunos)
     })
     
     jsonStudents = arrayStudents
@@ -21,11 +21,10 @@ const getAllStudents = function(){
         status = true
         return jsonStudents
     } else{
+        console.log("")
         return status
     }
     
- 
-
 }
 
 //console.log(getAllStudents())
@@ -37,50 +36,57 @@ getAllStudents()
 
 const getStudentsForStatus = function(a){
 
-   let status = false 
+    let status = false
 
-    let arrayStudents = []
- 
-    alunos.forEach(alunos =>{
+if(a.toUpperCase() == "CURSANDO" || a.toLowerCase()=="cursando"){
+    a = "Cursando"
+}
 
-        arrayStudents.push(alunos.status)
-    })
-    
-   arrayStudents
-
-
-   if(a == 'Cursando'){
-
-    const result = arrayStudents.filter(arrayStudents => arrayStudents == 'Cursando' );
-    
-    let jsonCursando = {}
-    jsonCursando = result
-
-    status = true
-
-    return jsonCursando
-    
-   }
-   else if (a == 'Finalizado' ){
-
-    const result = arrayStudents.filter(arrayStudents => arrayStudents == 'Finalizado' );
-    
-    let jsonCursando = {}
-    jsonCursando = result
-
-    status = true
-
-    return jsonCursando
-
-   }
-   else {
+else if(a.toUpperCase()=="FINALIZADO" || a.toUpperCase()=="finalizado"){
+    a = "Finalizado"
+}
+else{
+    console.log("Please insert valid data, which can be 'Cursando' or 'Finalizado '\n make sure to also check your spelling ;)")
     return status
-   }
+}
 
+    let arrayAllStudents =[]
+    jsonStudentsStatus ={}
 
+    //this part get all students and put on an array
+    arrayAllStudents.push(getAllStudents())
 
+    //this filter duh
+    const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.status == a )
+
+    jsonStudentsStatus = arrayStudentsStatus
+
+    if(jsonStudentsStatus != ''){
+
+        status = true
+        return jsonStudentsStatus
+    }
 
 }
-console.log(getStudentsForStatus('Finalizado'))
+console.log(getStudentsForStatus("Finalizado"))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// GET STUDENTS FOR SUBJECT
+
+// const getStudentForSubject = function(subject){
+
+//     let arrayAllStudents =[]
+
+//     arrayAllStudents.push(getAllStudents())
+
+//     console.log(arrayAllStudents)
+
+//     const result = arrayAllStudents.filter(arrayStudents => arrayStudents == subject )
+
+//     console.log(result)
+
+//     return subject
+// }
+// getStudentForSubject("002")
+// console.log(getStudentForSubject("002"))

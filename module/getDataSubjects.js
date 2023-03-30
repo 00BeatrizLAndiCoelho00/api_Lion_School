@@ -13,7 +13,7 @@ const getAllSubjects = function(){
     let arraySubjects = []
  
     cursos.forEach(nome =>{
-        arraySubjects.push(nome.nome)
+        arraySubjects.push(nome)
     })
     
     jsonSubjects = arraySubjects
@@ -24,8 +24,6 @@ const getAllSubjects = function(){
     }else{
         status = false
     }
-
-    
  
 }
 console.log(getAllSubjects())
@@ -34,4 +32,4 @@ module.exports ={
     getAllSubjects
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//cursos[0].nome
+// GET STUDENTS FOR SUBJECTS
