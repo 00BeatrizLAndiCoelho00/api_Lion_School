@@ -1,3 +1,4 @@
+const { stat } = require("fs")
 const { alunos } = require("../banco/alunos.js")
 
 ///////////////////////////////////////////GET STUDENTS LIST///////////////////////////////////////////////////////////////
@@ -32,31 +33,54 @@ const getAllStudents = function(){
 getAllStudents()
 
 
-///////////////////////////////////////////GET STUDENTS FOR EACH  LIST///////////////////////////////////////////////////////////////
+///////////////////////////////////////////GET ALL STUDENTS STATUS ///////////////////////////////////////////////////////////////
 
-const getStudentsForStatus = function(){
+const getStudentsForStatus = function(a){
 
-    let status = false
+   let status = false 
 
-    jsonStudents= {}
-   
     let arrayStudents = []
  
     alunos.forEach(alunos =>{
+
         arrayStudents.push(alunos.status)
     })
     
-    jsonStudents = arrayStudents
+   arrayStudents
 
-    if(jsonStudents != ''){
-        status = true
-        return jsonStudents
-    } else{
-        return status
-    }
+
+   if(a == 'Cursando'){
+
+    const result = arrayStudents.filter(arrayStudents => arrayStudents == 'Cursando' );
     
+    let jsonCursando = {}
+    jsonCursando = result
+
+    status = true
+
+    return jsonCursando
+    
+   }
+   else if (a == 'Finalizado' ){
+
+    const result = arrayStudents.filter(arrayStudents => arrayStudents == 'Finalizado' );
+    
+    let jsonCursando = {}
+    jsonCursando = result
+
+    status = true
+
+    return jsonCursando
+
+   }
+   else {
+    return status
+   }
+
+
+
 
 }
-console.log(getStudentsForStatus())
+console.log(getStudentsForStatus('Finalizado'))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
