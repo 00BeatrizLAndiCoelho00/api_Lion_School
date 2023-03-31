@@ -76,17 +76,34 @@ else{
 
 const getStudentForSubject = function(a){
 
+    let status = false 
     
+    if(a == "DS" ){
+        a = "001 - Técnico em Desenvolvimento de Sistemas"
+    }
+    else if(a == "RDS"){
+        a = "001 - Técnico em Redes de Computadores"
+    }
+    else{
+        console.log("Please insert valid data, which can be 'DS' or 'RDS' \n make sure to also check your spelling ;)")
+        return status
+    }
+
     let arrayAllStudents =[]
     let jsonStudentsSubject ={}
 
     arrayAllStudents.push(getAllStudents())
 
-    const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.curso[0].nome == a  )
+    const arrayStudentsSubject = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.curso[0].nome == a  )
 
-    jsonStudentsSubject = arrayStudentsStatus
+    jsonStudentsSubject = arrayStudentsSubject
 
+    if(jsonStudentsSubject != ''){
+        status = true
+        return jsonStudentsSubject
+    }
     return jsonStudentsSubject
 }
-
-console.log(getStudentForSubject("001 - Técnico em Desenvolvimento de Sistemas"))
+//"001 - Técnico em Redes de Computadores"
+//"001 - Técnico em Desenvolvimento de Sistemas"
+console.log(getStudentForSubject("RDS"))
