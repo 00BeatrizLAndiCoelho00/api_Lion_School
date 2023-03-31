@@ -34,40 +34,40 @@ getAllStudents()
 
 ///////////////////////////////////////////GET ALL STUDENTS STATUS ///////////////////////////////////////////////////////////////
 
-const getStudentsForStatus = function(a){
+// const getStudentsForStatus = function(a){
 
-    let status = false
+//     let status = false
 
-if(a.toUpperCase() == "CURSANDO" || a.toLowerCase()=="cursando"){
-    a = "Cursando"
-}
+// if(a.toUpperCase() == "CURSANDO" || a.toLowerCase()=="cursando"){
+//     a = "Cursando"
+// }
 
-else if(a.toUpperCase()=="FINALIZADO" || a.toUpperCase()=="finalizado"){
-    a = "Finalizado"
-}
-else{
-    console.log("Please insert valid data, which can be 'Cursando' or 'Finalizado '\n make sure to also check your spelling ;)")
-    return status
-}
+// else if(a.toUpperCase()=="FINALIZADO" || a.toUpperCase()=="finalizado"){
+//     a = "Finalizado"
+// }
+// else{
+//     console.log("Please insert valid data, which can be 'Cursando' or 'Finalizado '\n make sure to also check your spelling ;)")
+//     return status
+// }
 
-    let arrayAllStudents =[]
-    jsonStudentsStatus ={}
+//     let arrayAllStudents =[]
+//     jsonStudentsStatus ={}
 
-    //this part get all students and put on an array
-    arrayAllStudents.push(getAllStudents())
+//     //this part get all students and put on an array
+//     arrayAllStudents.push(getAllStudents())
 
-    //this filter duh
-    const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.status == a )
+//     //this filter duh
+//     const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.status == a )
 
-    jsonStudentsStatus = arrayStudentsStatus
+//     jsonStudentsStatus = arrayStudentsStatus
 
-    if(jsonStudentsStatus != ''){
+//     if(jsonStudentsStatus != ''){
 
-        status = true
-        return jsonStudentsStatus
-    }
+//         status = true
+//         return jsonStudentsStatus
+//     }
 
-}
+//}
 //console.log(getStudentsForStatus("Finalizado"))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,4 +106,40 @@ const getStudentForSubject = function(a){
 }
 //"001 - Técnico em Redes de Computadores"
 //"001 - Técnico em Desenvolvimento de Sistemas"
-console.log(getStudentForSubject("RDS"))
+//console.log(getStudentForSubject("RDS"))
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const getStudentsForStatus = function(desirableSubject,desirableStatus){
+
+    let status = false
+
+    if(desirableSubject == ''){
+        console.log("Please insert valid data on the first endpoint, which can be 'DS' or 'RDS'\n make sure to also check your spelling ;)")
+        return status
+    }
+
+    let arrayAllStudents =[]
+    jsonStudentsStatus ={}
+
+    //this part get all students and put on an array
+    arrayAllStudents.push(getStudentForSubject(desirableSubject))
+
+    //this filter duh
+    const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.status == desirableStatus )
+
+    jsonStudentsStatus = arrayStudentsStatus
+
+    
+        if(arrayStudentsStatus == ''){
+                 console.log("Please insert valid data, which can be 'Cursando' or 'Finalizado'\n make sure to also check your spelling ;)")
+                return status
+            }else{
+                status = true
+                return jsonStudentsStatus
+           
+            }
+
+}
+console.log(getStudentsForStatus("RDS","Cursando"))
+
+
