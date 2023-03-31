@@ -685,7 +685,7 @@ var alunos = [
         }
     ];
 
-   //console.log(alunos[1].status)
+   //console.log(alunos[0].curso)
 module.exports={
     alunos
 }

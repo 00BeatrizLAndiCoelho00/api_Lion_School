@@ -68,25 +68,25 @@ else{
     }
 
 }
-console.log(getStudentsForStatus("Finalizado"))
+//console.log(getStudentsForStatus("Finalizado"))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // GET STUDENTS FOR SUBJECT
 
-// const getStudentForSubject = function(subject){
+const getStudentForSubject = function(a){
 
-//     let arrayAllStudents =[]
+    
+    let arrayAllStudents =[]
+    let jsonStudentsSubject ={}
 
-//     arrayAllStudents.push(getAllStudents())
+    arrayAllStudents.push(getAllStudents())
 
-//     console.log(arrayAllStudents)
+    const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.curso[0].nome == a  )
 
-//     const result = arrayAllStudents.filter(arrayStudents => arrayStudents == subject )
+    jsonStudentsSubject = arrayStudentsStatus
 
-//     console.log(result)
+    return jsonStudentsSubject
+}
 
-//     return subject
-// }
-// getStudentForSubject("002")
-// console.log(getStudentForSubject("002"))
+console.log(getStudentForSubject("001 - Técnico em Desenvolvimento de Sistemas"))
