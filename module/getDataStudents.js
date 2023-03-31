@@ -140,6 +140,37 @@ const getStudentsForStatus = function(desirableSubject,desirableStatus){
             }
 
 }
-console.log(getStudentsForStatus("RDS","Cursando"))
+getStudentsForStatus("RDS","Cursando")
+//console.log(getStudentsForStatus("RDS","Cursando"))
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const getStudentByYear = function(desirableSubject,a){
+
+    let status = false
+
+    let arrayAllStudents =[]
+    let jsonStudentsSubject ={}
+
+    if(desirableSubject == '' ){
+        console.log("Please insert valid data on the first endpoint, which can be 'DS' or 'RDS'\n make sure to also check your spelling ;)")
+        return status
+    }
+     if (a == ''|| isNaN(a) ){
+        console.log("Please insert valid data on the first endpoint, which can be a year in numeric value \n make sure to also check your spelling ;)")
+    //     return status
+    }
+
+    arrayAllStudents.push(getStudentForSubject(desirableSubject))
+
+    const arrayStudentsSubject = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.curso[0].conclusao == a  )
+
+    jsonStudentsSubject = arrayStudentsSubject
+
+    return jsonStudentsSubject
+}
+//getStudentByYear("2024")
+console.log(getStudentByYear("DS","2023"))
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
