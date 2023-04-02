@@ -1,15 +1,12 @@
-/////////////////////////////////////////IMPORTS///////////////////////////////////////////////////////////////////////////
 
 const { cursos } = require("../banco/cursos.js")
 
-///////////////////////////////////////////GET SUBJECTS LIST///////////////////////////////////////////////////////////////
+//_______________________________GET SUBJECTS LIST_________________________________________________________//
 
 const getAllSubjects = function(){
 
-    jsonSubjects = {}
-
     let status = false
-   
+    let jsonSubjects = {}
     let arraySubjects = []
  
     cursos.forEach(nome =>{
@@ -22,14 +19,16 @@ const getAllSubjects = function(){
         status = true
         return jsonSubjects
     }else{
+        console.log("sorry something went wrong :(")
         status = false
     }
  
 }
-console.log(getAllSubjects())
+
+//console.log(getAllSubjects())
+
+//____________________________________________________________________________________________________
 
 module.exports ={
     getAllSubjects
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// GET STUDENTS FOR SUBJECTS

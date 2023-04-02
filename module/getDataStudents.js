@@ -1,14 +1,12 @@
 
 const { alunos } = require("../banco/alunos.js")
 
-///////////////////////////////////////////GET STUDENTS LIST///////////////////////////////////////////////////////////////
+//_________________________________GET STUDENTS LIST_____________________________________________________
 
 const getAllStudents = function(){
 
     let status = false
-
-    jsonStudents= {}
-   
+    let jsonStudents= {}
     let arrayStudents = []
  
     alunos.forEach(alunos =>{
@@ -24,60 +22,16 @@ const getAllStudents = function(){
         console.log("")
         return status
     }
-    
 }
-
 //console.log(getAllStudents())
+//getAllStudents()
 
-getAllStudents()
-
-
-///////////////////////////////////////////GET ALL STUDENTS STATUS ///////////////////////////////////////////////////////////////
-
-// const getStudentsForStatus = function(a){
-
-//     let status = false
-
-// if(a.toUpperCase() == "CURSANDO" || a.toLowerCase()=="cursando"){
-//     a = "Cursando"
-// }
-
-// else if(a.toUpperCase()=="FINALIZADO" || a.toUpperCase()=="finalizado"){
-//     a = "Finalizado"
-// }
-// else{
-//     console.log("Please insert valid data, which can be 'Cursando' or 'Finalizado '\n make sure to also check your spelling ;)")
-//     return status
-// }
-
-//     let arrayAllStudents =[]
-//     jsonStudentsStatus ={}
-
-//     //this part get all students and put on an array
-//     arrayAllStudents.push(getAllStudents())
-
-//     //this filter duh
-//     const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.status == a )
-
-//     jsonStudentsStatus = arrayStudentsStatus
-
-//     if(jsonStudentsStatus != ''){
-
-//         status = true
-//         return jsonStudentsStatus
-//     }
-
-//}
-//console.log(getStudentsForStatus("Finalizado"))
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// GET STUDENTS FOR SUBJECT
+//_______________________________________ GET STUDENTS FOR SUBJECT__________________________________________
 
 const getStudentForSubject = function(a){
 
     let status = false 
-    
+
     if(a == "DS" ){
         a = "001 - Técnico em Desenvolvimento de Sistemas"
     }
@@ -106,8 +60,10 @@ const getStudentForSubject = function(a){
 }
 //"001 - Técnico em Redes de Computadores"
 //"001 - Técnico em Desenvolvimento de Sistemas"
-//console.log(getStudentForSubject("RDS"))
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//console.log(getStudentForSubject("DS"))
+
+
+//_______________________________________ GET STUDENTS FOR STATUS__________________________________________//
 
 const getStudentsForStatus = function(desirableSubject,desirableStatus){
 
@@ -121,28 +77,25 @@ const getStudentsForStatus = function(desirableSubject,desirableStatus){
     let arrayAllStudents =[]
     jsonStudentsStatus ={}
 
-    //this part get all students and put on an array
     arrayAllStudents.push(getStudentForSubject(desirableSubject))
 
-    //this filter duh
     const arrayStudentsStatus = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.status == desirableStatus )
 
     jsonStudentsStatus = arrayStudentsStatus
-
     
         if(arrayStudentsStatus == ''){
                  console.log("Please insert valid data, which can be 'Cursando' or 'Finalizado'\n make sure to also check your spelling ;)")
                 return status
-            }else{
+        }else{
                 status = true
                 return jsonStudentsStatus
-           
-            }
+        }
 
 }
-getStudentsForStatus("RDS","Cursando")
+
 //console.log(getStudentsForStatus("RDS","Cursando"))
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//_______________________________________ GET STUDENTS FOR YEAR__________________________________________//
 
 const getStudentByYear = function(desirableSubject,a){
 
@@ -168,9 +121,16 @@ const getStudentByYear = function(desirableSubject,a){
 
     return jsonStudentsSubject
 }
+
 //getStudentByYear("2024")
-console.log(getStudentByYear("DS","2023"))
+//console.log(getStudentByYear("DS","2023"))
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+//_______________________________________ GET STUDENTS FOR YEAR AND STATUS__________________________________________//
 
+//________________________________________EXPORTS__________________________________________________________
 
+module.exports ={
+   getStudentForSubject,
+   getStudentsForStatus,
+   getStudentByYear
+}
