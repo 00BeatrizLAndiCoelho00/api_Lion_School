@@ -136,6 +136,30 @@ app.get('/v1/senai/student/year/:st/:dy', cors(),async function(request,response
     console.log(subjectAcronym)
 
 })
+
+//___________________________________________Get students by year and status___________________________________________________________//
+
+app.get('/v1/senai/student/year/:st/:dy/:ds', cors(),async function(request,response,next){
+
+    let subjectAcronym = request.params.st
+    let desirableYear = request.params.dy
+    let desirableStatus = request.params.ds
+    let statusCode
+    let studentsData = {}
+
+    const listStudents = require('./module/getDataStudents.js')
+
+    let studentsBySubject = listStudents.getStudentByYearAndStatus(subjectAcronym,desirableYear,desirableStatus)
+
+        statusCode = 200
+        studentsData = studentsBySubject
+     
+    response.status(statusCode)
+    response.json(studentsData)
+    console.log(subjectAcronym)
+
+})
+
 //_________________________________________________________________________________________________________
 
 app.listen(8080,function(){

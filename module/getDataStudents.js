@@ -166,5 +166,6 @@ const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desira
 module.exports ={
    getStudentForSubject,
    getStudentsForStatus,
-   getStudentByYear
+   getStudentByYear,
+   getStudentByYearAndStatus
 }
