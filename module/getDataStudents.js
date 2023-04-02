@@ -97,7 +97,7 @@ const getStudentsForStatus = function(desirableSubject,desirableStatus){
 
 //_______________________________________ GET STUDENTS FOR YEAR__________________________________________//
 
-const getStudentByYear = function(desirableSubject,a){
+const getStudentByYear = function(desirableSubject,desirableYear){
 
     let status = false
 
@@ -108,14 +108,14 @@ const getStudentByYear = function(desirableSubject,a){
         console.log("Please insert valid data on the first endpoint, which can be 'DS' or 'RDS'\n make sure to also check your spelling ;)")
         return status
     }
-     if (a == ''|| isNaN(a) ){
+     if (desirableYear == ''|| isNaN(desirableYear) ){
         console.log("Please insert valid data on the first endpoint, which can be a year in numeric value \n make sure to also check your spelling ;)")
-    //     return status
+         return status
     }
-
+  
     arrayAllStudents.push(getStudentForSubject(desirableSubject))
 
-    const arrayStudentsSubject = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.curso[0].conclusao == a  )
+    const arrayStudentsSubject = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.curso[0].conclusao == desirableYear  )
 
     jsonStudentsSubject = arrayStudentsSubject
 
@@ -126,6 +126,40 @@ const getStudentByYear = function(desirableSubject,a){
 //console.log(getStudentByYear("DS","2023"))
 
 //_______________________________________ GET STUDENTS FOR YEAR AND STATUS__________________________________________//
+
+
+
+const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desirableStatus){
+
+    let status = false
+
+    let arrayAllStudents =[]
+    let jsonStudentsSubject ={}
+
+    if(desirableSubject == '' ){
+        console.log("Please insert valid data on the first endpoint, which can be 'DS' or 'RDS'\n make sure to also check your spelling ;)")
+        return status
+    }
+     if (desirableYear == ''|| isNaN(desirableYear) ){
+        console.log("Please insert valid data on the first endpoint, which can be a year in numeric value \n make sure to also check your spelling ;)")
+         return status
+    }
+    if (desirableStatus == ''){
+        console.log("Please insert valid data on the first endpoint, which can be 'Cursando' or 'Finalizado' \n make sure to also check your spelling ;)")
+         return status
+    }
+  
+    arrayAllStudents.push(getStudentByYear(desirableSubject,desirableYear))
+
+    const studentYearStatus = arrayAllStudents[0].filter
+    ( arrayAllStudents => arrayAllStudents.status == desirableStatus)
+
+    jsonStudentsSubject = studentYearStatus
+
+    return jsonStudentsSubject
+}
+
+//console.log(getStudentByYearAndStatus("DS","2023","Cursando"))
 
 //________________________________________EXPORTS__________________________________________________________
 
