@@ -160,7 +160,7 @@ const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desira
 }
 
 //console.log(getStudentByYearAndStatus("DS","2023","Cursando"))
-
+//aaa
 //________________________________________EXPORTS__________________________________________________________
 
 module.exports ={
