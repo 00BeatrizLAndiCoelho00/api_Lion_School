@@ -26,6 +26,8 @@ const getAllStudents = function(){
 //console.log(getAllStudents())
 //getAllStudents()
 
+
+
 //_______________________________________ GET STUDENTS FOR SUBJECT__________________________________________
 
 const getStudentForSubject = function(a){
@@ -62,6 +64,25 @@ const getStudentForSubject = function(a){
 //"001 - Técnico em Desenvolvimento de Sistemas"
 //console.log(getStudentForSubject("DS"))
 
+//_________________________________GET a SPECIFIC STUDENT_____________________________________________________
+
+const getSpecificStudent = function(desirableSubject,desirableRegistration){
+
+    
+    let arrayAllStudents =[]
+   
+    jsonStudentsStatus ={}
+
+    arrayAllStudents.push(getStudentForSubject(desirableSubject))
+
+    const arrayStudentRegistration = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.matricula === desirableRegistration )
+
+    jsonStudentsStatus.student = arrayStudentRegistration
+
+    return jsonStudentsStatus
+}
+console.log(getSpecificStudent("RDS","20151001007"))
+//getSpecificStudent()
 
 //_______________________________________ GET STUDENTS FOR STATUS__________________________________________//
 
@@ -164,6 +185,7 @@ const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desira
 //________________________________________EXPORTS__________________________________________________________
 
 module.exports ={
+   getAllStudents,
    getStudentForSubject,
    getStudentsForStatus,
    getStudentByYear,
