@@ -27,7 +27,6 @@ const getAllStudents = function(){
 //getAllStudents()
 
 
-
 //_______________________________________ GET STUDENTS FOR SUBJECT__________________________________________
 
 const getStudentForSubject = function(a){
@@ -62,11 +61,11 @@ const getStudentForSubject = function(a){
 }
 //"001 - Técnico em Redes de Computadores"
 //"001 - Técnico em Desenvolvimento de Sistemas"
-//console.log(getStudentForSubject("DS"))
+//console.log(getStudentForSubject("RDS"))
 
 //_________________________________GET a SPECIFIC STUDENT_____________________________________________________
 
-const getSpecificStudent = function(desirableSubject,desirableRegistration){
+const getStudentByRegistration = function(desirableSubject,desirableRegistration){
 
     
     let arrayAllStudents =[]
@@ -81,7 +80,7 @@ const getSpecificStudent = function(desirableSubject,desirableRegistration){
 
     return jsonStudentsStatus
 }
-//console.log(getSpecificStudent("RDS","20151001007"))
+//console.log(getStudentByRegistration("RDS","20151001007"))
 //getSpecificStudent()
 
 //_______________________________________ GET STUDENTS FOR STATUS__________________________________________//
@@ -144,7 +143,7 @@ const getStudentByYear = function(desirableSubject,desirableYear){
 }
 
 //getStudentByYear("2024")
-//console.log(getStudentByYear("DS","2023"))
+//console.log(getStudentByYear("DS","2022"))
 
 //_______________________________________ GET STUDENTS FOR YEAR AND STATUS__________________________________________//
 
@@ -186,7 +185,7 @@ const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desira
 
 module.exports ={
    getAllStudents,
-   getSpecificStudent,
+   getStudentByRegistration,
    getStudentForSubject,
    getStudentsForStatus,
    getStudentByYear,

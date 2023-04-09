@@ -82,9 +82,9 @@ app.get('/v1/lion-school/alunos', cors(),async function(request,response,next){
 })
 //___________________________________________Get students for subjects___________________________________________________________//
 
-app.get('/v1/senai/student/subject/:st', cors(),async function(request,response,next){
+app.get('/v1/lion-school/alunos/cursos/:sd', cors(),async function(request,response,next){
 
-    let subjectAcronym = request.params.st
+    let subjectAcronym = request.params.sd
     let statusCode
     let studentsData = {}
 
@@ -100,6 +100,7 @@ app.get('/v1/senai/student/subject/:st', cors(),async function(request,response,
 
             statusCode = 200
             studentsData = studentsBySubject
+
      
     response.status(statusCode)
     response.json(studentsData)
@@ -109,6 +110,26 @@ app.get('/v1/senai/student/subject/:st', cors(),async function(request,response,
 })
 
 //___________________________________________Get students for registration___________________________________________________________//
+
+app.get('/v1/lion-school/cursos/matriculas/:st/:ds', cors(),async function(request,response,next){
+
+    let subjectAcronym = request.params.st
+    let desirableRegistration = request.params.ds
+    let statusCode
+    let studentsData = {}
+
+    const listStudents = require('./module/getDataStudents.js')
+
+    let studentsByRegistration = listStudents.getStudentByRegistration(subjectAcronym,desirableRegistration)
+
+        statusCode = 200
+        studentsData = studentsByRegistration
+     
+    response.status(statusCode)
+    response.json(studentsData)
+    console.log(subjectAcronym)
+
+})
 
 //___________________________________________Get students for status___________________________________________________________//
 
