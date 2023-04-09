@@ -65,14 +65,14 @@ const getStudentForSubject = function(a){
 
 //_________________________________GET a SPECIFIC STUDENT_____________________________________________________
 
-const getStudentByRegistration = function(desirableSubject,desirableRegistration){
+const getStudentByRegistration = function(desirableRegistration){
 
     
     let arrayAllStudents =[]
    
     jsonStudentsStatus ={}
 
-    arrayAllStudents.push(getStudentForSubject(desirableSubject))
+    arrayAllStudents.push(getAllStudents())
 
     const arrayStudentRegistration = arrayAllStudents[0].filter( arrayAllStudents => arrayAllStudents.matricula === desirableRegistration )
 
@@ -80,7 +80,7 @@ const getStudentByRegistration = function(desirableSubject,desirableRegistration
 
     return jsonStudentsStatus
 }
-//console.log(getStudentByRegistration("RDS","20151001007"))
+//console.log(getStudentByRegistration("20151001007"))
 //getSpecificStudent()
 
 //_______________________________________ GET STUDENTS FOR STATUS__________________________________________//
@@ -143,7 +143,7 @@ const getStudentByYear = function(desirableSubject,desirableYear){
 }
 
 //getStudentByYear("2024")
-//console.log(getStudentByYear("DS","2022"))
+console.log(getStudentByYear("DS","2022"))
 
 //_______________________________________ GET STUDENTS FOR YEAR AND STATUS__________________________________________//
 
