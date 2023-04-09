@@ -51,11 +51,26 @@ app.use((request,response,next)=>{
 })
 
 //___________________________________________Get list subjects___________________________________________________________//
-app.get('/v1/senai/subjects', cors(),async function(request,response,next){
+app.get('/v1/lion-school/cursos', cors(),async function(request,response,next){
 
-    const listSubjects = require('./module/getDataSubjects.js')
+    const listStudents = require('./module/getDataSubjects.js')
 
-    let subjects = listSubjects.getAllSubjects()
+    let students = listStudents.getAllSubjects()
+
+     if(students){
+    response.json(students)
+    response.status(200)
+     }else{
+         response.status(500)
+     }
+
+})
+//___________________________________________Get list all student___________________________________________________________//
+app.get('/v1/lion-school/alunos', cors(),async function(request,response,next){
+
+    const listSubjects = require('./module/getDataStudents.js')
+
+    let subjects = listSubjects.getAllStudents()
 
      if(subjects){
     response.json(subjects)
@@ -92,6 +107,8 @@ app.get('/v1/senai/student/subject/:st', cors(),async function(request,response,
     }
     
 })
+
+//___________________________________________Get students for registration___________________________________________________________//
 
 //___________________________________________Get students for status___________________________________________________________//
 

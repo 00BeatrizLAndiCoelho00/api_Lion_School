@@ -81,7 +81,7 @@ const getSpecificStudent = function(desirableSubject,desirableRegistration){
 
     return jsonStudentsStatus
 }
-console.log(getSpecificStudent("RDS","20151001007"))
+//console.log(getSpecificStudent("RDS","20151001007"))
 //getSpecificStudent()
 
 //_______________________________________ GET STUDENTS FOR STATUS__________________________________________//
@@ -186,6 +186,7 @@ const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desira
 
 module.exports ={
    getAllStudents,
+   getSpecificStudent,
    getStudentForSubject,
    getStudentsForStatus,
    getStudentByYear,
