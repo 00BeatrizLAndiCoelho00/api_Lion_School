@@ -111,29 +111,35 @@ app.get('/v1/lion-school/alunos/cursos/:sd', cors(),async function(request,respo
 
 //___________________________________________Get students for registration___________________________________________________________//
 
-app.get('/v1/lion-school/cursos/matriculas/:st/:ds', cors(),async function(request,response,next){
+app.get('/v1/lion-school/alunos/matriculas/:sd', cors(),async function(request,response,next){
 
-    let subjectAcronym = request.params.st
-    let desirableRegistration = request.params.ds
+    let registration = request.params.sd
     let statusCode
     let studentsData = {}
 
-    const listStudents = require('./module/getDataStudents.js')
+    if(registration  == '' || registration == undefined ){
+    
+        statusCode = 400
+        
+    }else{
+        const listStudents = require('./module/getDataStudents.js')
 
-    let studentsByRegistration = listStudents.getStudentByRegistration(subjectAcronym,desirableRegistration)
+    let studentsBySubject = listStudents.getStudentByRegistration(registration )
 
-        statusCode = 200
-        studentsData = studentsByRegistration
+            statusCode = 200
+            studentsData = studentsBySubject
+
      
     response.status(statusCode)
     response.json(studentsData)
-    console.log(subjectAcronym)
-
+    console.log(registration )
+    }
+    
 })
 
 //___________________________________________Get students for status___________________________________________________________//
 
-app.get('/v1/senai/student/status/:st/:ds', cors(),async function(request,response,next){
+app.get('/v1/lion-school/alunos/status/:st/:ds', cors(),async function(request,response,next){
 
     let subjectAcronym = request.params.st
     let desirableStatus = request.params.ds
@@ -155,7 +161,7 @@ app.get('/v1/senai/student/status/:st/:ds', cors(),async function(request,respon
 
 //___________________________________________Get students by year___________________________________________________________//
 
-app.get('/v1/senai/student/year/:st/:dy', cors(),async function(request,response,next){
+app.get('/v1/lion-school/cursos/ano/:st/:dy', cors(),async function(request,response,next){
 
     let subjectAcronym = request.params.st
     let desirableYear = request.params.dy
@@ -177,7 +183,7 @@ app.get('/v1/senai/student/year/:st/:dy', cors(),async function(request,response
 
 //___________________________________________Get students by year and status___________________________________________________________//
 
-app.get('/v1/senai/student/year/:st/:dy/:ds', cors(),async function(request,response,next){
+app.get('/v1/lion-school/cursos/ano/status/:st/:dy/:ds', cors(),async function(request,response,next){
 
     let subjectAcronym = request.params.st
     let desirableYear = request.params.dy
