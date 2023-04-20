@@ -179,7 +179,7 @@ const getStudentByYearAndStatus = function(desirableSubject,desirableYear,desira
     return jsonStudentsSubject
 }
 
-console.log(getStudentByYearAndStatus("DS","2023","Cursando"))
+//console.log(getStudentByYearAndStatus("DS","2023","Cursando"))
 //aaa
 //________________________________________EXPORTS__________________________________________________________
 
